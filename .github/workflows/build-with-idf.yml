@@ -29,6 +29,17 @@ jobs:
           idf.py app
           idf.py size
 
-      - name: Release
+      - name: Assemble Artifact
+        run: |
+          rm -rf ~/artifact/
+          mkdir -p ~/artifact/
+          cp code/build/hello-world.bin ~/artifact/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: hello-world
+          path: ~/artifact/
+
+      - name: Done
         run: |
           echo "🍏 This job's status is ${{ job.status }}."

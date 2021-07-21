@@ -1,0 +1,33 @@
+name: Build Code with ESP-IDF
+on: [push]
+jobs:
+  Builder:
+    name: Builder for test ESP32 project
+    runs-on: ubuntu-20.04
+
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: Install ESP-IDF
+        run: |
+          ./install.sh v4.3
+
+      - name: Build
+        run: |
+          cd code
+          source ~/esp/esp-idf/export.sh
+          idf.py reconfigure
+          idf.py app
+          idf.py size
+
+      - name: Release
+        - run: echo "🍏 This job's status is ${{ job.status }}."

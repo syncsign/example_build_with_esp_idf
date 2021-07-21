@@ -23,5 +23,5 @@ esac
 cd ~/esp/esp-idf
 
 echo -e "\n## Installing tools"
-# ./install.sh > ~/esp-idf-install.log 2>&1
-./install.sh
+./install.sh > ~/esp-idf-install.log 2>&1
+

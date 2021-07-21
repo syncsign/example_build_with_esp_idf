@@ -34,10 +34,12 @@ jobs:
           rm -rf ~/artifact/
           mkdir -p ~/artifact/
           cp code/build/hello-world.bin ~/artifact/
+          cp code/build/bootloader/bootloader.bin ~/artifact/
+          cp code/build/partition_table/partition-table.bin ~/artifact/
       - name: Upload Artifact
         uses: actions/upload-artifact@master
         with:
-          name: hello-world
+          name: firmware
           path: ~/artifact/
 
       - name: Done

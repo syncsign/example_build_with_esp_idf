@@ -26,7 +26,7 @@ jobs:
           cd code
           source ~/esp/esp-idf/export.sh
           idf.py reconfigure
-          idf.py app
+          idf.py build
           idf.py size
 
       - name: Assemble Artifact

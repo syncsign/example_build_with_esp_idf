@@ -30,4 +30,5 @@ jobs:
           idf.py size
 
       - name: Release
-        - run: echo "🍏 This job's status is ${{ job.status }}."
+        run: |
+          echo "🍏 This job's status is ${{ job.status }}."
